@@ -1,0 +1,243 @@
+
+<!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://websim.example.com/aviator-monitor-realtime-ai/" w-tid="2"/>
+<link rel="stylesheet" href="/fonts.css?v=ce1ac01a8a801a52b04b7d2898612d358f1496d7">
+<link rel="stylesheet" href="/ctxmenu.css?v=ce1ac01a8a801a52b04b7d2898612d358f1496d7">
+<script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_nnf7gqn4nao","titleKey":"_oweeqhlskp","id":"pg83ratlDUsO9FexI","url":"https://websim.example.com/aviator-monitor-realtime-ai/","version":"ce1ac01a8a801a52b04b7d2898612d358f1496d7","method":"eval","command":"Quero AI avisei próxima subida de vela rosa após exemplo tá minuto após 3 sequência de velas baixas1.99","hostOrigin":"https://websim.ai"}</script>
+<script class="websim-injected" src="/dist/index.js?v=ce1ac01a8a801a52b04b7d2898612d358f1496d7"></script>
+<title w-tid="3">Aviator Game Monitor - Previsão AI para Vela Rosa</title>
+<style w-tid="4">
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-container {
+    width: 800px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#current-round {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#multiplier {
+    font-weight: bold;
+    color: #ffd700;
+}
+
+#timer {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#rounds-history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.round-history {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.round-history.pink {
+    background-color: #ff69b4;
+    color: #000000;
+}
+
+#rose-candle {
+    width: 100%;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#rose-candle h2 {
+    color: #ff69b4;
+}
+
+#rose-candle-time {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff69b4;
+}
+
+#current-time {
+    font-size: 24px;
+    text-align: center;
+    margin-top: 20px;
+    color: #4169e1;
+}
+
+#ai-prediction {
+    width: 100%;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#ai-prediction h2 {
+    color: #4169e1;
+}
+
+#prediction-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4169e1;
+}
+</style>
+</head>
+<body w-tid="5">
+<div id="game-container" w-tid="6">
+    <div id="current-round" w-tid="7">
+        Multiplicador: <span id="multiplier" w-tid="8">1.00x</span>
+    </div>
+    <div id="timer" w-tid="9">Próxima rodada em: 10s</div>
+    <div id="rounds-history" w-tid="10"></div>
+    <div id="current-time" w-tid="11"></div>
+    <div id="rose-candle" w-tid="12">
+        <h2 w-tid="13">Última Vela Rosa (>10x)</h2>
+        <div id="rose-candle-time" w-tid="14">--:--:--</div>
+    </div>
+    <div id="ai-prediction" w-tid="15">
+        <h2 w-tid="16">Previsão AI</h2>
+        <div id="prediction-text" w-tid="17">Analisando padrões...</div>
+    </div>
+</div>
+
+<script w-tid="18">
+let roundsHistory = [];
+const maxHistoryRounds = 20;
+let lastRoseCandleTime = null;
+let lowRoundStreak = 0;
+
+function updateDisplay(data) {
+    document.getElementById('multiplier').textContent = data.multiplier.toFixed(2) + 'x';
+    updateTimer(10); // Assumindo que cada rodada dura 10 segundos
+    updateHistory(data.multiplier);
+    checkRoseCandle(data.multiplier);
+    updateCurrentTime();
+    updateAIPrediction(data.multiplier);
+}
+
+function updateTimer(seconds) {
+    const timerElement = document.getElementById('timer');
+    let remainingSeconds = seconds;
+
+    const countDown = setInterval(() => {
+        timerElement.textContent = `Próxima rodada em: ${remainingSeconds}s`;
+        remainingSeconds--;
+
+        if (remainingSeconds < 0) {
+            clearInterval(countDown);
+        }
+    }, 1000);
+}
+
+function updateHistory(multiplier) {
+    roundsHistory.unshift(multiplier);
+    if (roundsHistory.length > maxHistoryRounds) {
+        roundsHistory.pop();
+    }
+
+    const historyContainer = document.getElementById('rounds-history');
+    historyContainer.innerHTML = '';
+
+    roundsHistory.forEach(mult => {
+        const roundElement = document.createElement('div');
+        roundElement.className = 'round-history';
+        roundElement.textContent = mult.toFixed(2) + 'x';
+        if (mult >= 10) {
+            roundElement.classList.add('pink');
+        }
+        historyContainer.appendChild(roundElement);
+    });
+}
+
+function checkRoseCandle(multiplier) {
+    if (multiplier >= 10) {
+        lastRoseCandleTime = new Date();
+        updateRoseCandleTime();
+    }
+}
+
+function updateRoseCandleTime() {
+    const roseCandleTimeElement = document.getElementById('rose-candle-time');
+    if (lastRoseCandleTime) {
+        roseCandleTimeElement.textContent = formatTime(lastRoseCandleTime);
+    } else {
+        roseCandleTimeElement.textContent = '--:--:--';
+    }
+}
+
+function formatTime(date) {
+    return date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+function updateCurrentTime() {
+    const currentTimeElement = document.getElementById('current-time');
+    const now = new Date();
+    currentTimeElement.textContent = `Hora atual: ${formatTime(now)}`;
+}
+
+function updateAIPrediction(multiplier) {
+    const predictionElement = document.getElementById('prediction-text');
+    
+    if (multiplier <= 1.99) {
+        lowRoundStreak++;
+    } else {
+        lowRoundStreak = 0;
+    }
+
+    if (lowRoundStreak >= 3) {
+        const predictedTime = new Date(new Date().getTime() + 60000); // 1 minuto no futuro
+        predictionElement.textContent = `Possível vela rosa em ${formatTime(predictedTime)}`;
+    } else {
+        predictionElement.textContent = 'Analisando padrões...';
+    }
+}
+
+function simulateRealTimeData() {
+    const mockData = {
+        multiplier: Math.random() < 0.1 ? 10 + Math.random() * 5 : 1 + Math.random() * 1.99
+    };
+    updateDisplay(mockData);
+}
+
+// Iniciar simulação (remover quando conectar ao backend real)
+setInterval(simulateRealTimeData, 10000);
+
+// Atualizar o horário atual a cada segundo
+setInterval(updateCurrentTime, 1000);
+
+// Inicializar o display
+updateCurrentTime();
+simulateRealTimeData();
+</script>
+</body></html>
