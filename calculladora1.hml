@@ -1,0 +1,166 @@
+
+<!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://websim.example.com/aviator-monitor/" w-tid="2"/>
+<link rel="stylesheet" href="/fonts.css?v=c1648dc40292c4c06dbcabae7a1436b36120c220">
+<link rel="stylesheet" href="/ctxmenu.css?v=c1648dc40292c4c06dbcabae7a1436b36120c220">
+<script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_nnwcmg6ajt","titleKey":"_77rpa6decdk","id":"VWVWQwPyE3Csb7WWg","url":"https://websim.example.com/aviator-monitor/","version":"c1648dc40292c4c06dbcabae7a1436b36120c220","method":"eval","command":"Gráfico está muito grande quero rodadas","hostOrigin":"https://websim.ai"}</script>
+<script class="websim-injected" src="/dist/index.js?v=c1648dc40292c4c06dbcabae7a1436b36120c220"></script>
+<title w-tid="3">Aviator Game Monitor - Rodadas</title>
+<style w-tid="4">
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#game-container {
+    width: 800px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+#rounds-display {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.round {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.multiplier {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#alerts {
+    width: 800px;
+    background-color: #2a2a2a;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.alert {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.pink {
+    background-color: #ff69b4;
+    color: #000000;
+}
+
+.low-peak {
+    background-color: #ff4500;
+    color: #ffffff;
+}
+
+.prediction {
+    background-color: #4169e1;
+    color: #ffffff;
+}
+</style>
+</head>
+<body w-tid="5">
+<div id="game-container" w-tid="6">
+    <h2 w-tid="7">Últimas Rodadas</h2>
+    <div id="rounds-display" w-tid="8"></div>
+</div>
+<div id="alerts" w-tid="9"></div>
+
+<script w-tid="10">
+let rounds = [];
+const maxRounds = 50;
+
+function generateRound() {
+    const multiplier = (1 + Math.random() * 4).toFixed(2);
+    const time = new Date().toLocaleTimeString();
+    return { multiplier, time };
+}
+
+function updateDisplay() {
+    const roundsDisplay = document.getElementById('rounds-display');
+    roundsDisplay.innerHTML = '';
+
+    rounds.forEach((round, index) => {
+        const roundElement = document.createElement('div');
+        roundElement.className = 'round';
+        roundElement.innerHTML = `
+            <div class="multiplier">${round.multiplier}x</div>
+            <div>${round.time}</div>
+        `;
+        roundsDisplay.appendChild(roundElement);
+    });
+
+    checkAlerts(rounds[0]);
+}
+
+function checkAlerts(latestRound) {
+    if (!latestRound) return;
+
+    const alerts = document.getElementById('alerts');
+    const multiplier = parseFloat(latestRound.multiplier);
+    const multiplierStr = latestRound.multiplier;
+    
+    if (multiplierStr[0] === multiplierStr[multiplierStr.length - 1]) {
+        const alert = document.createElement('div');
+        alert.className = 'alert pink';
+        alert.textContent = `Vela Rosa Detectada! Multiplicador: ${multiplierStr}`;
+        alerts.prepend(alert);
+    }
+    
+    if (multiplier < 1.99) {
+        const alert = document.createElement('div');
+        alert.className = 'alert low-peak';
+        alert.textContent = `ALERTA: Pico abaixo de 1.99 detectado às ${latestRound.time}. Multiplicador: ${multiplierStr}`;
+        alerts.prepend(alert);
+    }
+    
+    const currentMinute = new Date().getMinutes();
+    if ([8, 16, 26, 36, 46, 56].includes(currentMinute)) {
+        const alert = document.createElement('div');
+        alert.className = 'alert prediction';
+        alert.textContent = `Previsão de ciclo de rosa detectada no minuto ${currentMinute}`;
+        alerts.prepend(alert);
+    }
+    
+    while (alerts.children.length > 5) {
+        alerts.removeChild(alerts.lastChild);
+    }
+}
+
+function simulateGame() {
+    const newRound = generateRound();
+    rounds.unshift(newRound);
+    if (rounds.length > maxRounds) {
+        rounds.pop();
+    }
+    updateDisplay();
+}
+
+// Iniciar com algumas rodadas
+for (let i = 0; i < 10; i++) {
+    rounds.push(generateRound());
+}
+updateDisplay();
+
+// Simular novas rodadas a cada 3 segundos
+setInterval(simulateGame, 3000);
+</script>
+</body></html>
