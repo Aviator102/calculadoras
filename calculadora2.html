@@ -1,0 +1,362 @@
+
+<!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://aposta1.com/games/jogar/aviator" w-tid="2"/>
+<link rel="stylesheet" href="/fonts.css?v=c1648dc40292c4c06dbcabae7a1436b36120c220">
+<link rel="stylesheet" href="/ctxmenu.css?v=c1648dc40292c4c06dbcabae7a1436b36120c220">
+<script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_rfp5t3t8mj9","titleKey":"_dast8wq4g07","id":"Ly7FSwkgOwpZbOXTV","url":"https://aposta1.com/games/jogar/aviator","version":"c1648dc40292c4c06dbcabae7a1436b36120c220","method":"eval","command":"!fix: error: Uncaught Error: Canvas is already in use. Chart with ID '0' must be destroyed before the canvas with ID 'multiplierChart' can be reused.\nError: Canvas is already in use. Chart with ID '0' must be destroyed before the canvas with ID 'multiplierChart' can be reused.\n    at new An \n    at updateChart \n    at https://party.websim.ai/api/v1/sites/68zHoGb6NdkVvs0yD/html?origin=https%3A%2F%2Fwebsim.ai:320:13","hostOrigin":"https://websim.ai"}</script>
+<script class="websim-injected" src="/dist/index.js?v=c1648dc40292c4c06dbcabae7a1436b36120c220"></script>
+
+<title w-tid="3">Aviator Hack Dashboard - Tempo Real</title>
+<style w-tid="4">
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard {
+    width: 95%;
+    max-width: 1200px;
+    background-color: #2a2a2a;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: #ffd700;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.live-data {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.live-data-item {
+    text-align: center;
+}
+
+.live-data-item h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #4169e1;
+}
+
+.live-data-item .value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+.stat-box h2 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: #4169e1;
+}
+
+.stat-box .value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.chart-container {
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.chart-container h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #4169e1;
+    text-align: center;
+}
+
+#multiplierChart {
+    width: 100%;
+    height: 250px;
+}
+
+.event-log {
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.event-log h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #4169e1;
+    text-align: center;
+}
+
+.event-item {
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.event-item .time {
+    font-weight: bold;
+    color: #4169e1;
+}
+
+.event-item .multiplier {
+    color: #ffd700;
+    font-weight: bold;
+}
+
+.control-panel {
+    background-color: #3a3a3a;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.control-panel h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #4169e1;
+    text-align: center;
+}
+
+.control-buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.control-button {
+    background-color: #4169e1;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px;
+}
+
+.control-button:hover {
+    background-color: #3a5fc8;
+}
+
+.control-button.danger {
+    background-color: #ff4136;
+}
+
+.control-button.danger:hover {
+    background-color: #e03a30;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js" crossOrigin="anonymous" w-tid="5"></script>
+</head>
+<body w-tid="6">
+<div class="dashboard" w-tid="7">
+    <div class="header" w-tid="8">
+        <h1 w-tid="9">Aviator Hack Dashboard - Tempo Real</h1>
+    </div>
+
+    <div class="live-data" w-tid="10">
+        <div class="live-data-item" w-tid="11">
+            <h2 w-tid="12">Multiplicador Atual</h2>
+            <div class="value" id="currentMultiplier" w-tid="13">1.00x</div>
+        </div>
+        <div class="live-data-item" w-tid="14">
+            <h2 w-tid="15">Rodada Atual</h2>
+            <div class="value" id="currentRound" w-tid="16">0</div>
+        </div>
+    </div>
+
+    <div class="stats-container" w-tid="17">
+        <div class="stat-box" w-tid="18">
+            <h2 w-tid="19">Total de Jogos</h2>
+            <div class="value" id="totalGames" w-tid="20">0</div>
+        </div>
+        <div class="stat-box" w-tid="21">
+            <h2 w-tid="22">Média do Multiplicador</h2>
+            <div class="value" id="avgMultiplier" w-tid="23">0.00x</div>
+        </div>
+        <div class="stat-box" w-tid="24">
+            <h2 w-tid="25">Maior Multiplicador</h2>
+            <div class="value" id="maxMultiplier" w-tid="26">0.00x</div>
+        </div>
+        <div class="stat-box" w-tid="27">
+            <h2 w-tid="28">Velas Rosas (>10x)</h2>
+            <div class="value" id="pinkCandles" w-tid="29">0</div>
+        </div>
+    </div>
+
+    <div class="chart-container" w-tid="30">
+        <h2 w-tid="31">Histórico de Multiplicadores</h2>
+        <canvas id="multiplierChart" w-tid="32"></canvas>
+    </div>
+
+    <div class="event-log" w-tid="33">
+        <h2 w-tid="34">Log de Eventos</h2>
+        <div id="eventList" w-tid="35"></div>
+    </div>
+
+    <div class="control-panel" w-tid="36">
+        <h2 w-tid="37">Painel de Controle</h2>
+        <div class="control-buttons" w-tid="38">
+            <button class="control-button" id="triggerRose" w-tid="39">Disparar Vela Rosa</button>
+            <button class="control-button" id="modifyAlgorithm" w-tid="40">Modificar Algoritmo</button>
+            <button class="control-button danger" id="emergencyStop" w-tid="41">Parada de Emergência</button>
+        </div>
+    </div>
+</div>
+
+<script w-tid="42">
+let gameData = {
+    totalGames: 0,
+    multipliers: [],
+    pinkCandles: 0,
+    currentMultiplier: 1.00,
+    currentRound: 0
+};
+
+let chart;
+
+function updateStats() {
+    document.getElementById('totalGames').textContent = gameData.totalGames;
+    document.getElementById('avgMultiplier').textContent = (gameData.multipliers.reduce((a, b) => a + b, 0) / gameData.multipliers.length).toFixed(2) + 'x';
+    document.getElementById('maxMultiplier').textContent = Math.max(...gameData.multipliers, 0).toFixed(2) + 'x';
+    document.getElementById('pinkCandles').textContent = gameData.pinkCandles;
+    document.getElementById('currentMultiplier').textContent = gameData.currentMultiplier.toFixed(2) + 'x';
+    document.getElementById('currentRound').textContent = gameData.currentRound;
+}
+
+function updateChart() {
+    const ctx = document.getElementById('multiplierChart').getContext('2d');
+    
+    if (chart) {
+        chart.destroy();
+    }
+    
+    chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: gameData.multipliers.map((_, index) => index + 1),
+            datasets: [{
+                label: 'Multiplicador',
+                data: gameData.multipliers,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+function addEventLog(multiplier) {
+    const eventList = document.getElementById('eventList');
+    const eventItem = document.createElement('div');
+    eventItem.className = 'event-item';
+    const now = new Date();
+    eventItem.innerHTML = `
+        <span class="time">${now.toLocaleTimeString()}</span>: 
+        Rodada ${gameData.currentRound} - Multiplicador 
+        <span class="multiplier">${multiplier.toFixed(2)}x</span>
+    `;
+    eventList.insertBefore(eventItem, eventList.firstChild);
+    if (eventList.children.length > 10) {
+        eventList.removeChild(eventList.lastChild);
+    }
+}
+
+function simulateGame() {
+    gameData.totalGames++;
+    gameData.currentRound++;
+    const finalMultiplier = Math.random() < 0.1 ? 10 + Math.random() * 5 : 1 + Math.random() * 1.99;
+    
+    let currentMultiplier = 1.00;
+    const interval = setInterval(() => {
+        if (currentMultiplier >= finalMultiplier) {
+            clearInterval(interval);
+            gameData.multipliers.push(finalMultiplier);
+            if (finalMultiplier >= 10) {
+                gameData.pinkCandles++;
+            }
+            if (gameData.multipliers.length > 50) {
+                gameData.multipliers.shift();
+            }
+            addEventLog(finalMultiplier);
+            updateStats();
+            updateChart();
+            setTimeout(simulateGame, 2000);
+        } else {
+            currentMultiplier += 0.01;
+            gameData.currentMultiplier = currentMultiplier;
+            updateStats();
+        }
+    }, 50);
+}
+
+// Event Listeners para botões
+document.getElementById('triggerRose').addEventListener('click', () => {
+    alert('Vela Rosa disparada manualmente!');
+    const roseMultiplier = 10 + Math.random() * 5;
+    gameData.multipliers.push(roseMultiplier);
+    gameData.pinkCandles++;
+    addEventLog(roseMultiplier);
+    updateStats();
+    updateChart();
+});
+
+document.getElementById('modifyAlgorithm').addEventListener('click', () => {
+    alert('Algoritmo modificado. Os resultados podem variar a partir de agora.');
+});
+
+document.getElementById('emergencyStop').addEventListener('click', () => {
+    alert('PARADA DE EMERGÊNCIA ATIVADA! Todas as operações foram interrompidas.');
+});
+
+// Inicialização
+updateStats();
+updateChart();
+simulateGame();
+</script>
+</body></html>
