@@ -1,0 +1,139 @@
+
+<!DOCTYPE html><html w-tid="0"><head w-tid="1"><base href simulated-href="https://aposta1.com/" w-tid="2"/>
+<link rel="stylesheet" href="/fonts.css?v=7bb979172ab20ada8e0ad0496a7695dee051c044">
+<link rel="stylesheet" href="/ctxmenu.css?v=7bb979172ab20ada8e0ad0496a7695dee051c044">
+<script class="websim-injected">__WEBSIM_DATA__={"locationKey":"_vnnh7otp7lg","titleKey":"_oqpwt78new","id":"3qiktgsJZFmyboqbK","url":"https://aposta1.com/","version":"7bb979172ab20ada8e0ad0496a7695dee051c044","method":"eval","command":"Quero criar quero hacker pegando rodada em tempo real","hostOrigin":"https://websim.ai"}</script>
+<script class="websim-injected" src="/dist/index.js?v=7bb979172ab20ada8e0ad0496a7695dee051c044"></script>
+
+<meta charset="UTF-8" w-tid="3"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" w-tid="4"/>
+<title w-tid="5">Simulador de Apostas - Hack em Tempo Real</title>
+<style w-tid="6">
+  body {
+    font-family: 'Courier New', monospace;
+    background-color: #000;
+    color: #0f0;
+    margin: 0;
+    padding: 20px;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #001100;
+    border: 1px solid #0f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,255,0,0.5);
+  }
+  h1 {
+    text-align: center;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+  }
+  .game-info {
+    background-color: #002200;
+    border: 1px solid #0f0;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+  .log {
+    height: 200px;
+    overflow-y: scroll;
+    background-color: #001100;
+    border: 1px solid #0f0;
+    padding: 10px;
+    font-size: 14px;
+  }
+  .controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #003300;
+    color: #0f0;
+    border: 1px solid #0f0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  button:hover {
+    background-color: #0f0;
+    color: #000;
+  }
+  .result {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    animation: blink 1s infinite;
+  }
+  @keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+</style>
+</head>
+<body w-tid="7">
+  <div class="container" w-tid="8">
+    <h1 w-tid="9">Hack de Apostas em Tempo Real</h1>
+    <div class="game-info" w-tid="10">
+      <p w-tid="11"><strong w-tid="12">Status:</strong> <span id="status" w-tid="13">Aguardando início</span></p>
+      <p w-tid="14"><strong w-tid="15">Rodada Atual:</strong> <span id="currentRound" w-tid="16">N/A</span></p>
+      <p w-tid="17"><strong w-tid="18">Hash SHA512:</strong> <span id="hashSHA512" w-tid="19">N/A</span></p>
+    </div>
+    <div class="log" id="hackLog" w-tid="20"></div>
+    <div class="result" id="result" w-tid="21"></div>
+    <div class="controls" w-tid="22">
+      <button onclick="startHack()" w-tid="23">Iniciar Hack</button>
+      <button onclick="stopHack()" w-tid="24">Parar Hack</button>
+    </div>
+  </div>
+
+<script w-tid="25">
+let hackInterval;
+let roundCounter = 1758952;
+
+function addLog(message) {
+  const log = document.getElementById('hackLog');
+  log.innerHTML += `[${new Date().toLocaleTimeString()}] ${message}<br>`;
+  log.scrollTop = log.scrollHeight;
+}
+
+function generateHash() {
+  return Array(64).fill(0).map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+}
+
+function startHack() {
+  document.getElementById('status').textContent = 'Hack em andamento';
+  addLog('Iniciando processo de hack...');
+  
+  hackInterval = setInterval(() => {
+    roundCounter++;
+    const hash = generateHash();
+    document.getElementById('currentRound').textContent = roundCounter;
+    document.getElementById('hashSHA512').textContent = hash;
+    
+    addLog(`Interceptando rodada ${roundCounter}`);
+    addLog(`Hash capturado: ${hash}`);
+    
+    const result = (Math.random() * 10).toFixed(2);
+    document.getElementById('result').textContent = `Resultado previsto: ${result}`;
+    
+    addLog(`Analisando resultado: ${result}`);
+  }, 3000);
+}
+
+function stopHack() {
+  clearInterval(hackInterval);
+  document.getElementById('status').textContent = 'Hack interrompido';
+  addLog('Processo de hack interrompido pelo usuário.');
+}
+
+addLog('Sistema inicializado. Aguardando comando para iniciar o hack.');
+</script>
+</body>
+</html>
